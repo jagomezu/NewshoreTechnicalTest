@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "a12Q6NbUUHwEXgqsg/s0bdrEH4ZP/vdJ/iBBirzezaDDSvhTNG+5EoBf/fHeOn1sY1RWrhGSTYoDCJqha6qJ4A==",
+  "success": true,
+  "projectFilePath": "C:\\Mine\\Projects\\NewshoreTechnicalTest\\Newshore.TechnicalTest.Transverse\\Newshore.TechnicalTest.Transverse.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gome802545\\.nuget\\packages\\serilog\\2.12.0\\serilog.2.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}
