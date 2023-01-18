@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Newshore.TechnicalTest.Api.props" />
+</Project>

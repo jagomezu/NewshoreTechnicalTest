@@ -1,0 +1,21 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a compilar
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Crear
+       [dbo].[Flight] (Tabla)
+       [dbo].[Journey] (Tabla)
+       [dbo].[JourneyFlight] (Tabla)
+       [dbo].[Transport] (Tabla)
+       [dbo].[FK_Flight_Transport] (Clave externa)
+       [dbo].[FK_JourneyFlight_Journey] (Clave externa)
+       [dbo].[FK_JourneyFlight_Flight] (Clave externa)
+
+** Acciones de compatibilidad

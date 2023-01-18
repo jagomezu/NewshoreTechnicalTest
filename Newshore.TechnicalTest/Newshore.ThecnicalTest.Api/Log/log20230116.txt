@@ -1,0 +1,1051 @@
+2023-01-16 22:29:08.401 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:29:29.170 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:29:29.204 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:29:34.570 -05:00 [ERR] Failed executing DbCommand (254ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transport_id], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transport_id], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transport_id] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:29:34.793 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:f6cc0bfb-0454-4e1a-acf1-ca6356cc323b
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:f6cc0bfb-0454-4e1a-acf1-ca6356cc323b
+Error Number:207,State:1,Class:16
+2023-01-16 22:29:34.878 -05:00 [FTL] [Get journeys by places] -- Error --> Origin: MZL, Destination: MDE -- [Invalid column name 'JourneyId'.].
+2023-01-16 22:29:34.968 -05:00 [FTL] [DOMAIN Get journeys by places] -- Error --> Origin: MZL, Destination: MDE -- [Invalid column name 'JourneyId'.].
+2023-01-16 22:29:35.082 -05:00 [FTL] [DOMAIN Get exists Journey] -- Error --> Origin: MZL, Destination: MDE -- [One or more errors occurred. (Invalid column name 'JourneyId'.)]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 22:29:35.114 -05:00 [FTL] [DOMAIN Get Journey By Origin And Destination] -- Error --> Origin: MZL, Destination: MDE -- [Solicitud no puede ser procesada. No fue posible calcular la ruta].
+2023-01-16 22:30:58.814 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:31:06.515 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:31:15.198 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:31:33.440 -05:00 [ERR] Failed executing DbCommand (294ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transport_id], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transport_id], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transport_id] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:31:34.146 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:cf71fe64-43ba-4dd1-b530-de70c424f28c
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:cf71fe64-43ba-4dd1-b530-de70c424f28c
+Error Number:207,State:1,Class:16
+2023-01-16 22:36:37.496 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:36:44.078 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:36:50.740 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:36:59.129 -05:00 [ERR] Failed executing DbCommand (306ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transport_id], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transport_id], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transport_id] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:36:59.293 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:a41ba376-3b58-4413-bebe-debc3110f73d
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:a41ba376-3b58-4413-bebe-debc3110f73d
+Error Number:207,State:1,Class:16
+2023-01-16 22:45:15.355 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:45:23.116 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:45:30.624 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:45:47.130 -05:00 [ERR] Failed executing DbCommand (998ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transportId], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transportId], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transportId] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:45:47.619 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:29cd94eb-c50e-4eb4-b4d7-c3eb0f4179a0
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:29cd94eb-c50e-4eb4-b4d7-c3eb0f4179a0
+Error Number:207,State:1,Class:16
+2023-01-16 22:47:29.142 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:48:12.994 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:48:19.764 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:48:29.877 -05:00 [ERR] Failed executing DbCommand (363ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transportId], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transportId], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transportId] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:48:30.173 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e9095251-d8b0-486a-96b3-c1235b1ef35b
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e9095251-d8b0-486a-96b3-c1235b1ef35b
+Error Number:207,State:1,Class:16
+2023-01-16 22:55:41.343 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:55:47.984 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:55:52.897 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 22:56:07.882 -05:00 [ERR] Failed executing DbCommand (227ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transportId], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transportId], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transportId] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 22:56:08.019 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:d9b91e39-3647-4d7d-8568-dd50636f2e11
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:d9b91e39-3647-4d7d-8568-dd50636f2e11
+Error Number:207,State:1,Class:16
+2023-01-16 23:02:18.908 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:02:26.032 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:02:26.050 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:02:30.600 -05:00 [ERR] Failed executing DbCommand (169ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transportId], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transportId], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transportId] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 23:02:30.756 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:8514913c-c607-4390-961c-85b15e56b611
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:8514913c-c607-4390-961c-85b15e56b611
+Error Number:207,State:1,Class:16
+2023-01-16 23:02:30.834 -05:00 [FTL] [Get journeys by places] -- Error --> Origin: MZL, Destination: MDE -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:02:30.978 -05:00 [FTL] [DOMAIN Get journeys by places] -- Error --> Origin: MZL, Destination: MDE -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:02:31.116 -05:00 [FTL] [DOMAIN Get exists Journey] -- Error --> Origin: MZL, Destination: MDE -- [One or more errors occurred. (Invalid column name 'JourneyId'.)]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:02:31.153 -05:00 [FTL] [DOMAIN Get Journey By Origin And Destination] -- Error --> Origin: MZL, Destination: MDE -- [Solicitud no puede ser procesada. No fue posible calcular la ruta].
+2023-01-16 23:02:49.115 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:02:56.200 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:03:06.123 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:03:08.916 -05:00 [ERR] Failed executing DbCommand (225ms) [Parameters=[@__origin_0='?' (Size = 4) (DbType = AnsiString), @__destination_1='?' (Size = 4) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT [j].[id], [j].[destination], [j].[isDirectFlight], [j].[isRoundTripFlight], [j].[origin], [j].[price], [t0].[id], [t0].[destination], [t0].[JourneyId], [t0].[origin], [t0].[price], [t0].[transportId], [t0].[id0], [t0].[flightCarrier], [t0].[flightNumber]
+FROM [Journey] AS [j]
+LEFT JOIN (
+    SELECT [f].[id], [f].[destination], [f].[JourneyId], [f].[origin], [f].[price], [f].[transportId], [t].[id] AS [id0], [t].[flightCarrier], [t].[flightNumber]
+    FROM [Flight] AS [f]
+    INNER JOIN [Transport] AS [t] ON [f].[transportId] = [t].[id]
+) AS [t0] ON [j].[id] = [t0].[JourneyId]
+WHERE [j].[origin] = @__origin_0 AND [j].[destination] = @__destination_1
+ORDER BY [j].[id], [t0].[id]
+2023-01-16 23:03:08.919 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:8514913c-c607-4390-961c-85b15e56b611
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:8514913c-c607-4390-961c-85b15e56b611
+Error Number:207,State:1,Class:16
+2023-01-16 23:07:36.048 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:07:44.133 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:07:49.378 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:08:09.962 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:16:01.280 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:16:12.178 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:16:17.227 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:16:32.457 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:16:39.242 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:19:42.191 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:19:44.085 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:19:44.358 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:19:53.018 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:19:53.018 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:27:31.548 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:27:32.443 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:27:32.477 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:27:39.296 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:27:39.297 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:31:23.763 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:31:24.020 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:31:24.029 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:31:26.291 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:31:26.292 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:33:49.424 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:33:49.675 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:33:49.690 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:33:52.498 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:33:52.498 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:37:34.041 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:37:34.291 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:37:34.304 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:37:36.928 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:37:36.929 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:39:13.005 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:39:13.260 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:39:13.273 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:39:15.151 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:39:15.151 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:41:45.780 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:41:46.080 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:41:46.094 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:41:48.098 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:41:48.098 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:46:50.070 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:46:50.313 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:46:50.323 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:46:52.077 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:46:52.078 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:50:14.669 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:50:14.867 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:50:14.879 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:50:16.803 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:50:16.803 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:53:20.652 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:20.896 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:20.910 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:22.686 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:22.686 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:53:33.417 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:33.418 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:33.430 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:53:33.433 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:54:01.235 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:54:01.252 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:54:01.540 -05:00 [INF] [Create Journey] -- Success --> Journey Info: {"Id":1,"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:54:01.540 -05:00 [INF] [DOMAIN Create Journey] -- Success --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:54:17.731 -05:00 [INF] [DOMAIN Create Transport] -- Start --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:54:17.733 -05:00 [INF] [Create Transport] -- Start --> Transport Info: {"Id":0,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:54:17.767 -05:00 [INF] [Create Transport] -- Success --> Transport Info: {"Id":1,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:54:17.767 -05:00 [INF] [DOMAIN Create Transport] -- Success --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:54:49.441 -05:00 [INF] [DOMAIN Create Transport] -- Start --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:54:49.441 -05:00 [INF] [Create Transport] -- Start --> Transport Info: {"Id":0,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:54:50.216 -05:00 [INF] [Create Transport] -- Success --> Transport Info: {"Id":2,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:54:50.216 -05:00 [INF] [DOMAIN Create Transport] -- Success --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:55:13.689 -05:00 [INF] [DOMAIN Create Transport] -- Start --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:55:22.160 -05:00 [INF] [Create Transport] -- Start --> Transport Info: {"Id":0,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:55:32.467 -05:00 [INF] [Create Transport] -- Success --> Transport Info: {"Id":3,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:55:49.570 -05:00 [INF] [DOMAIN Create Transport] -- Success --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:55:53.213 -05:00 [INF] [DOMAIN Create Flight] -- Start --> Flight Info: {"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":3,"$type":"CreateFlightCommand"}
+2023-01-16 23:55:53.215 -05:00 [INF] [Create flight] -- Start --> Flight Info: {"Id":0,"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":3,"Transport":{"Id":0,"FlightCarrier":"","FlightNumber":"","Flights":[],"$type":"Transport"},"$type":"Flight"}
+2023-01-16 23:55:53.274 -05:00 [ERR] Failed executing DbCommand (25ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-01-16 23:55:53.347 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:55:53.385 -05:00 [FTL] [Create flight] -- Error --> Flight Info: {"Id":0,"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":3,"Transport":{"Id":0,"FlightCarrier":"","FlightNumber":"","Flights":[],"$type":"Transport"},"$type":"Flight"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.446 -05:00 [FTL] [DOMAIN Create Flight] -- Error --> Flight Info: {"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":3,"$type":"CreateFlightCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.510 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:55:53.511 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:55:53.550 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO [Journey] ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+OUTPUT INSERTED.[id]
+VALUES (@p5, @p6, @p7, @p8, @p9);
+2023-01-16 23:55:53.562 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:55:53.593 -05:00 [FTL] [Create Journey] -- Error --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.656 -05:00 [FTL] [DOMAIN Create Journey] -- Error --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.706 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"}
+2023-01-16 23:55:53.706 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:55:53.728 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double), @p10='?' (Size = 4) (DbType = AnsiString), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (Size = 4) (DbType = AnsiString), @p14='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+MERGE [Journey] USING (
+VALUES (@p5, @p6, @p7, @p8, @p9, 0),
+(@p10, @p11, @p12, @p13, @p14, 1)) AS i ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+VALUES (i.[destination], i.[isDirectFlight], i.[isRoundTripFlight], i.[origin], i.[price])
+OUTPUT INSERTED.[id], i._Position;
+2023-01-16 23:55:53.730 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:55:53.764 -05:00 [FTL] [Create Journey] -- Error --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.827 -05:00 [FTL] [DOMAIN Create Journey] -- Error --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:55:53.876 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"}
+2023-01-16 23:55:53.876 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:55:53.884 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double), @p10='?' (Size = 4) (DbType = AnsiString), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (Size = 4) (DbType = AnsiString), @p14='?' (DbType = Double), @p15='?' (Size = 4) (DbType = AnsiString), @p16='?' (DbType = Boolean), @p17='?' (DbType = Boolean), @p18='?' (Size = 4) (DbType = AnsiString), @p19='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+MERGE [Journey] USING (
+VALUES (@p5, @p6, @p7, @p8, @p9, 0),
+(@p10, @p11, @p12, @p13, @p14, 1),
+(@p15, @p16, @p17, @p18, @p19, 2)) AS i ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+VALUES (i.[destination], i.[isDirectFlight], i.[isRoundTripFlight], i.[origin], i.[price])
+OUTPUT INSERTED.[id], i._Position;
+2023-01-16 23:55:53.888 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:6c23f700-8fcb-42bc-998e-6d1b90152147
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:58:32.171 -05:00 [INF] [DOMAIN Get Journey By Origin And Destination] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:58:32.419 -05:00 [INF] [DOMAIN Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:58:32.429 -05:00 [INF] [Get journeys by places] -- Start --> Origin: MZL, Destination: MDE
+2023-01-16 23:58:34.099 -05:00 [INF] [Get journeys by places] -- Success --> Origin: MZL, Destination: MDE
+2023-01-16 23:58:34.100 -05:00 [WRN] [DOMAIN Get journeys by places] -- Success --> Origin: MZL, Destination: MDE -- Journeys not found
+2023-01-16 23:58:50.621 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:58:50.640 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:58:50.995 -05:00 [INF] [Create Journey] -- Success --> Journey Info: {"Id":2,"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:58:50.996 -05:00 [INF] [DOMAIN Create Journey] -- Success --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":400,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:59:05.322 -05:00 [INF] [DOMAIN Create Transport] -- Start --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:59:08.285 -05:00 [INF] [Create Transport] -- Start --> Transport Info: {"Id":0,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:59:08.319 -05:00 [INF] [Create Transport] -- Success --> Transport Info: {"Id":4,"FlightCarrier":"CO","FlightNumber":"8002","Flights":[],"$type":"Transport"}
+2023-01-16 23:59:10.125 -05:00 [INF] [DOMAIN Create Transport] -- Success --> Transport Info: {"FlightCarrier":"CO","FlightNumber":"8002","$type":"CreateTransportCommand"}
+2023-01-16 23:59:14.402 -05:00 [INF] [DOMAIN Create Flight] -- Start --> Flight Info: {"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":4,"$type":"CreateFlightCommand"}
+2023-01-16 23:59:14.409 -05:00 [INF] [Create flight] -- Start --> Flight Info: {"Id":0,"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":4,"Transport":{"Id":0,"FlightCarrier":"","FlightNumber":"","Flights":[],"$type":"Transport"},"$type":"Flight"}
+2023-01-16 23:59:14.444 -05:00 [ERR] Failed executing DbCommand (7ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-01-16 23:59:14.481 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:59:14.516 -05:00 [FTL] [Create flight] -- Error --> Flight Info: {"Id":0,"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":4,"Transport":{"Id":0,"FlightCarrier":"","FlightNumber":"","Flights":[],"$type":"Transport"},"$type":"Flight"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.574 -05:00 [FTL] [DOMAIN Create Flight] -- Error --> Flight Info: {"Origin":"MZL","Destination":"CTG","Price":200,"TransportId":4,"$type":"CreateFlightCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.637 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"}
+2023-01-16 23:59:14.638 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:59:14.673 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO [Journey] ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+OUTPUT INSERTED.[id]
+VALUES (@p5, @p6, @p7, @p8, @p9);
+2023-01-16 23:59:14.684 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:59:14.717 -05:00 [FTL] [Create Journey] -- Error --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"FlightList":[],"$type":"Journey"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.774 -05:00 [FTL] [DOMAIN Create Journey] -- Error --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":false,"$type":"CreateJourneyCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.821 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"}
+2023-01-16 23:59:14.821 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:59:14.837 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double), @p10='?' (Size = 4) (DbType = AnsiString), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (Size = 4) (DbType = AnsiString), @p14='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+MERGE [Journey] USING (
+VALUES (@p5, @p6, @p7, @p8, @p9, 0),
+(@p10, @p11, @p12, @p13, @p14, 1)) AS i ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+VALUES (i.[destination], i.[isDirectFlight], i.[isRoundTripFlight], i.[origin], i.[price])
+OUTPUT INSERTED.[id], i._Position;
+2023-01-16 23:59:14.839 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:59:14.868 -05:00 [FTL] [Create Journey] -- Error --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.932 -05:00 [FTL] [DOMAIN Create Journey] -- Error --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":800,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:14.982 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"}
+2023-01-16 23:59:14.982 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:59:14.986 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double), @p10='?' (Size = 4) (DbType = AnsiString), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (Size = 4) (DbType = AnsiString), @p14='?' (DbType = Double), @p15='?' (Size = 4) (DbType = AnsiString), @p16='?' (DbType = Boolean), @p17='?' (DbType = Boolean), @p18='?' (Size = 4) (DbType = AnsiString), @p19='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+MERGE [Journey] USING (
+VALUES (@p5, @p6, @p7, @p8, @p9, 0),
+(@p10, @p11, @p12, @p13, @p14, 1),
+(@p15, @p16, @p17, @p18, @p19, 2)) AS i ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+VALUES (i.[destination], i.[isDirectFlight], i.[isRoundTripFlight], i.[origin], i.[price])
+OUTPUT INSERTED.[id], i._Position;
+2023-01-16 23:59:14.989 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-01-16 23:59:15.025 -05:00 [FTL] [Create Journey] -- Error --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:15.088 -05:00 [FTL] [DOMAIN Create Journey] -- Error --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"} -- [An error occurred while saving the entity changes. See the inner exception for details.]. -- [Invalid column name 'JourneyId'.].
+2023-01-16 23:59:15.137 -05:00 [INF] [DOMAIN Create Journey] -- Start --> Journey Info: {"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"$type":"CreateJourneyCommand"}
+2023-01-16 23:59:15.137 -05:00 [INF] [Create Journey] -- Start --> Journey Info: {"Id":0,"Origin":"MZL","Destination":"MDE","Price":1200,"IsDirectFlight":false,"IsRoundTripFlight":true,"FlightList":[],"$type":"Journey"}
+2023-01-16 23:59:15.152 -05:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?' (Size = 4) (DbType = AnsiString), @p1='?' (DbType = Int32), @p2='?' (Size = 4) (DbType = AnsiString), @p3='?' (DbType = Double), @p4='?' (DbType = Int32), @p5='?' (Size = 4) (DbType = AnsiString), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (Size = 4) (DbType = AnsiString), @p9='?' (DbType = Double), @p10='?' (Size = 4) (DbType = AnsiString), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (Size = 4) (DbType = AnsiString), @p14='?' (DbType = Double), @p15='?' (Size = 4) (DbType = AnsiString), @p16='?' (DbType = Boolean), @p17='?' (DbType = Boolean), @p18='?' (Size = 4) (DbType = AnsiString), @p19='?' (DbType = Double), @p20='?' (Size = 4) (DbType = AnsiString), @p21='?' (DbType = Boolean), @p22='?' (DbType = Boolean), @p23='?' (Size = 4) (DbType = AnsiString), @p24='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Flight] ([destination], [JourneyId], [origin], [price], [transportId])
+OUTPUT INSERTED.[id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+MERGE [Journey] USING (
+VALUES (@p5, @p6, @p7, @p8, @p9, 0),
+(@p10, @p11, @p12, @p13, @p14, 1),
+(@p15, @p16, @p17, @p18, @p19, 2),
+(@p20, @p21, @p22, @p23, @p24, 3)) AS i ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([destination], [isDirectFlight], [isRoundTripFlight], [origin], [price])
+VALUES (i.[destination], i.[isDirectFlight], i.[isRoundTripFlight], i.[origin], i.[price])
+OUTPUT INSERTED.[id], i._Position;
+2023-01-16 23:59:15.157 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'Newshore.TechnicalTest.Infrastructure.SqlServerDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'JourneyId'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:756351d7-27f5-42e9-ab3d-000bc4433052
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)

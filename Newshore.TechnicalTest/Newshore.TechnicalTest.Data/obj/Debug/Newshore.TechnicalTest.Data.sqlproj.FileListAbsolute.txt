@@ -1,0 +1,10 @@
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.Data.dacpac
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.Data.dll
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.Data.pdb
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.sqlproj.AssemblyReference.cache
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Model.xml
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\refactor.xml
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\postdeploy.sql
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\predeploy.sql
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.dll
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.pdb
