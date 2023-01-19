@@ -169,8 +169,8 @@ namespace Newshore.TechnicalTest.Domain.Domain
                 {
                     Origin = origin,
                     Destination = destination,
-                    IsDirectFlight = flights.Count == 1 || (flights.Count == 2 && flights.First().Origin == flights.Last().Destination),
-                    IsRoundTripFlight = flights.First().Origin == flights.Last().Destination,
+                    IsDirectFlight = flights != null && flights.Any() ? flights.Count == 1 || (flights.Count == 2 && flights.First().Origin == flights.Last().Destination) : false,
+                    IsRoundTripFlight = flights != null && flights.Any() ? flights.First().Origin == flights.Last().Destination : false,
                     Flights = new()
                 };
 

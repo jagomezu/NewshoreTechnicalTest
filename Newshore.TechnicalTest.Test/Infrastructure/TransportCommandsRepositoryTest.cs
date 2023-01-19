@@ -90,3 +90,4 @@ namespace Newshore.TechnicalTest.Test.Infrastructure
             }
         }
     }
+}

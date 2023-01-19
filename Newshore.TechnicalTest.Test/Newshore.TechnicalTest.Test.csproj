@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Newshore.TechnicalTest.Domain\Newshore.TechnicalTest.Domain.csproj" />
     <ProjectReference Include="..\Newshore.TechnicalTest.Infrastructure\Newshore.TechnicalTest.Infrastructure.csproj" />
   </ItemGroup>
 

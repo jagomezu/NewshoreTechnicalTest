@@ -6,9 +6,12 @@ namespace Newshore.TechnicalTest.Test.Infrastructure
 {
     public class JourneyCommandsRepositoryTest
     {
+        #region Properties
         private Mock<IJourneyCommandsRepository>? _mockRepository;
         private const string EXCEPTION_MESSAGE = "Generated Exception for test";
+        #endregion
 
+        #region Create() Tests
         [Fact]
         public void Create_Success()
         {
@@ -35,7 +38,9 @@ namespace Newshore.TechnicalTest.Test.Infrastructure
                 Assert.Equal(EXCEPTION_MESSAGE, ex.Message);
             }
         }
+        #endregion
 
+        #region Delete() Tests
         [Fact]
         public void Delete_Success()
         {
@@ -62,7 +67,9 @@ namespace Newshore.TechnicalTest.Test.Infrastructure
                 Assert.Equal(EXCEPTION_MESSAGE, ex.Message);
             }
         }
+        #endregion
 
+        #region Update() Tests
         [Fact]
         public void Update_Success()
         {
@@ -89,5 +96,6 @@ namespace Newshore.TechnicalTest.Test.Infrastructure
                 Assert.Equal(EXCEPTION_MESSAGE, ex.Message);
             }
         }
+        #endregion
     }
 }

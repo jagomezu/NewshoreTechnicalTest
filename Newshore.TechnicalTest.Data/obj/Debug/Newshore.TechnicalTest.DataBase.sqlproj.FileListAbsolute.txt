@@ -4,3 +4,9 @@ C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.Technical
 C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.DataBase.sqlproj.AssemblyReference.cache
 C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.dll
 C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.pdb
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.DataBase.dacpac
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.Data.dll
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\bin\Debug\Newshore.TechnicalTest.Data.pdb
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.DataBase.sqlproj.AssemblyReference.cache
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.dll
+C:\Mine\Projects\NewshoreTechnicalTest\Newshore.TechnicalTest.Data\obj\Debug\Newshore.TechnicalTest.Data.pdb
