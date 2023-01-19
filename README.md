@@ -35,10 +35,5 @@ La respuesta permite visualizar todas las posibles rutas desde el origen al dest
 
 7. Logs de aplicación con SeriLog
 
-8. Inicio de implementación de pruebas unitarias con XUnit.
+8. Implementación de pruebas unitarias con XUnit.
 	
-#Implementación pendiente
-
-1. Continuar implementación de pruebas unitarias.
-
-2. Iniciar implementación de pruebas de integración.
